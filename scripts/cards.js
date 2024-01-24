@@ -48,7 +48,11 @@ function displayRecipeCards() {
 
         recipe.ingredients.forEach(ingredient => {
             const ingredientItem = document.createElement('li');
-            const ingredientText = `${ingredient.ingredient}<br><span class="grey-title">${ingredient.quantity || ''} ${ingredient.unit || ''} </span>`;
+            ingredientItem.classList.add('container-recipe-cards-item-ingredientsList-item');
+
+
+
+            const ingredientText = `${ingredient.ingredient}<br><span class="grey-title">${ingredient.quantity || '-'} ${ingredient.unit || ''} </span>`;
             ingredientItem.innerHTML = ingredientText;
             ingredientsList.appendChild(ingredientItem);
         });
