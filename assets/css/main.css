@@ -3,6 +3,10 @@ body {
   margin: auto;
 }
 
+body {
+  background-color: #C6C6C6;
+}
+
 .header {
   background-image: url(../pictures/header/cover-picture.png);
   background-repeat: none;
@@ -41,9 +45,20 @@ body {
 
 .container-filtres {
   display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 10px 60px 0px 60px;
 }
 .container-filtres-tags {
   display: flex;
-  gap: 20px;
-  background-color: red;
+  justify-content: space-around;
+  gap: 60px;
+}
+.container-filtres-tags select {
+  width: 195px;
+  height: 30px;
+  border-radius: 11px;
+}
+.container-filtres-results {
+  font-weight: bold;
 }/*# sourceMappingURL=main.css.map */
