@@ -6,23 +6,41 @@ function displayRecipeCards() {
         recipeCard.classList.add('container-recipe-cards-item');
 
         const image = document.createElement('img');
-        image.classList.add('recipe-image');
+        image.classList.add('container-recipe-cards-item-img');
         image.src = "./assets/pictures/recipes/"+recipe.image;
         recipeCard.appendChild(image);
 
-        const name = document.createElement('h2');
-        name.textContent = recipe.name;
-        recipeCard.appendChild(name);
-
         const time = document.createElement('p');
+        time.classList.add('container-recipe-cards-item-time');
         time.textContent = `Temps : ${recipe.time} minutes`;
         recipeCard.appendChild(time);
 
-        const servings = document.createElement('p');
-        servings.textContent = `Portions : ${recipe.servings}`;
-        recipeCard.appendChild(servings);
+
+        const title = document.createElement('h2');
+        title.classList.add('container-recipe-cards-item-title');
+        title.textContent = recipe.name;
+        recipeCard.appendChild(title);
+
+        const secondTitle = document.createElement('h4');
+        secondTitle.classList.add('container-recipe-cards-item-secondTitle');
+        secondTitle.textContent= `Recette`;
+        recipeCard.appendChild(secondTitle);
+
+
+        const description = document.createElement('p');
+        description.classList.add('container-recipe-cards-item-description');
+        description.textContent = recipe.description;
+        recipeCard.appendChild(description);
+
+        const thirdTitle = document.createElement('h4');
+        thirdTitle.classList.add('container-recipe-cards-item-thirdTitle');
+        thirdTitle.textContent= `Ingrédients`;
+        recipeCard.appendChild(thirdTitle);
+
 
         const ingredientsList = document.createElement('ul');
+        ingredientsList.classList.add('container-recipe-cards-item-ingredientsList');
+
         recipe.ingredients.forEach(ingredient => {
             const ingredientItem = document.createElement('li');
             const ingredientText = `${ingredient.quantity || ''} ${ingredient.unit || ''} ${ingredient.ingredient}`;

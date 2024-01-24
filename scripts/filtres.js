@@ -44,32 +44,3 @@ recipes.forEach(recipe => {
         }
     });
 });
-
-
-// Assurez-vous que vos recettes sont stockées dans une variable `recipes`
-
-function updateRecipeCount() {
-    const selectedIngredient = document.getElementById('ingredients').value;
-    const selectedAppliance = document.getElementById('appliances').value;
-    const selectedUtensil = document.getElementById('ustensils').value;
-  
-    let filteredRecipes = recipes.filter(recipe => {
-      const matchesIngredient = selectedIngredient === 'ingredients' || recipe.ingredients.includes(selectedIngredient);
-      const matchesAppliance = selectedAppliance === 'appliances' || recipe.appliance === selectedAppliance;
-      const matchesUtensil = selectedUtensil === 'ustensils' || recipe.utensils.includes(selectedUtensil);
-  
-      return matchesIngredient && matchesAppliance && matchesUtensil;
-    });
-  
-    // Mettez à jour l'interface utilisateur avec le nombre de recettes filtrées
-    document.querySelector('.container-filtres-results-number').textContent = filteredRecipes.length;
-  }
-  
-  // Attachez cette fonction comme un écouteur d'événements pour chaque sélecteur
-  document.getElementById('ingredients').addEventListener('change', updateRecipeCount);
-  document.getElementById('appliances').addEventListener('change', updateRecipeCount);
-  document.getElementById('ustensils').addEventListener('change', updateRecipeCount);
-  
-  // Initialisez la page avec le nombre total de recettes
-  document.querySelector('.container-filtres-results-number').textContent = recipes.length;
-  
