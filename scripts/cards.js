@@ -48,7 +48,7 @@ function displayRecipeCards() {
 
         recipe.ingredients.forEach(ingredient => {
             const ingredientItem = document.createElement('li');
-            const ingredientText = `${ingredient.ingredient} <br> <span class="grey-title"> ${ingredient.quantity || ''} ${ingredient.unit || ''} </span>`;
+            const ingredientText = `${ingredient.ingredient}<br><span class="grey-title">${ingredient.quantity || ''} ${ingredient.unit || ''} </span>`;
             ingredientItem.innerHTML = ingredientText;
             ingredientsList.appendChild(ingredientItem);
         });
@@ -59,7 +59,7 @@ function displayRecipeCards() {
 
     function truncateDescription(description) {
         const maxLength = 140;
-        return description.length > maxLength ? description.substring(0, maxLength) + '...' : description;
+        return description.length > maxLength ? description.substring(0, maxLength) : description;
       }
 }
 

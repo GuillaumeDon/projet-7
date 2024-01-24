@@ -76,6 +76,9 @@ ul {
   border-radius: 10px;
   height: 730px;
 }
+.container-recipe-cards-item :not(img) {
+  padding: 0px 20px;
+}
 .container-recipe-cards-item-img {
   width: 100%;
   -o-object-fit: cover;
@@ -86,7 +89,7 @@ ul {
 .container-recipe-cards-item-ingredientsList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 20px;
+  line-height: 25px;
 }
 .container-recipe-cards-item-containerTime {
   width: 60px;
@@ -99,8 +102,15 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 !important;
+}
+.container-recipe-cards-item-containerTime-time {
+  padding: 0 !important;
 }
 .container-recipe-cards-item-secondTitle, .container-recipe-cards-item-thirdTitle,
 .container-recipe-cards-item .grey-title {
   color: grey;
+}
+.container-recipe-cards-item .grey-title {
+  padding: 0 !important;
 }/*# sourceMappingURL=main.css.map */
