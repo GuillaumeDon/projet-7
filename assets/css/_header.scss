@@ -40,6 +40,24 @@
             right: 19%;
             height: 40px;
         }
+
+        &-close{
+            position: absolute;
+            bottom: 345px;
+            right: 25%;
+            width: 20px;
+            height: 20px;
+            
+            
+        }
+
+        &-close:hover{
+            cursor: pointer;
+        }
     }
 
 }
+
+
+
+

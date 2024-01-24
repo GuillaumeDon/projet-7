@@ -79,3 +79,10 @@ padding: 10px 0px 10px 30px;
 .dropdown-menu.show{
     width:300px;
 }
+
+
+.dropdown-menu.show{
+
+    max-height: 250px;
+     overflow-y: auto;
+}

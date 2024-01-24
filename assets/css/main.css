@@ -48,6 +48,16 @@ ul {
   right: 19%;
   height: 40px;
 }
+.header-form-close {
+  position: absolute;
+  bottom: 345px;
+  right: 25%;
+  width: 20px;
+  height: 20px;
+}
+.header-form-close:hover {
+  cursor: pointer;
+}
 
 .container-filtres {
   display: flex;
@@ -106,6 +116,11 @@ ul {
 
 .dropdown-menu.show {
   width: 300px;
+}
+
+.dropdown-menu.show {
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 p {
