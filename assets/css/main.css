@@ -7,6 +7,10 @@ body {
   background-color: #C6C6C6;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .header {
   background-image: url(../pictures/header/cover-picture.png);
   background-repeat: none;
@@ -67,11 +71,32 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-}
-.container-recipe-cards img {
-  width: 200px;
-  height: 200px;
+  position: relative;
 }
 .container-recipe-cards-item {
   background-color: whitesmoke;
+  border-radius: 10px;
+}
+.container-recipe-cards-item-img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 250px;
+  border-radius: 10px;
+}
+.container-recipe-cards-item-ingredientsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.container-recipe-cards-item-containerTime {
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #FFD15B;
+  position: relative;
+  bottom: 33%;
+  left: 83%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */

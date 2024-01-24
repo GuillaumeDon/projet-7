@@ -10,10 +10,14 @@ function displayRecipeCards() {
         image.src = "./assets/pictures/recipes/"+recipe.image;
         recipeCard.appendChild(image);
 
+        const containerTime =  document.createElement('div');
+        containerTime.classList.add('container-recipe-cards-item-containerTime');
+        recipeCard.appendChild(containerTime);
+
         const time = document.createElement('p');
-        time.classList.add('container-recipe-cards-item-time');
-        time.textContent = `Temps : ${recipe.time} minutes`;
-        recipeCard.appendChild(time);
+        time.classList.add('container-recipe-cards-item-containerTime-time');
+        time.textContent = `${recipe.time} min`;
+        containerTime.appendChild(time);
 
 
         const title = document.createElement('h2');
@@ -43,8 +47,8 @@ function displayRecipeCards() {
 
         recipe.ingredients.forEach(ingredient => {
             const ingredientItem = document.createElement('li');
-            const ingredientText = `${ingredient.quantity || ''} ${ingredient.unit || ''} ${ingredient.ingredient}`;
-            ingredientItem.textContent = ingredientText;
+            const ingredientText = `${ingredient.ingredient} <br> <span class="grey-title"> ${ingredient.quantity || ''} ${ingredient.unit || ''} </span>`;
+            ingredientItem.innerHTML = ingredientText;
             ingredientsList.appendChild(ingredientItem);
         });
         recipeCard.appendChild(ingredientsList);

@@ -3,17 +3,44 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); // Crée trois colonnes de taille égale
     gap: 20px; // Espace entre les cartes
+    position: relative;
   
 
-    img{
-        width: 200px;
-        height: 200px;
-    }
+
 
     &-item{
         background-color: whitesmoke;
+        border-radius: 10px;
+
+        &-img{
+            width: 100%;
+            object-fit: cover;
+            height: 250px;
+            border-radius: 10px;
+        }
+
+        &-ingredientsList{
+            display: grid;
+    grid-template-columns: repeat(2, 1fr);
+        }
+
+
+        &-containerTime{
+            width:60px;
+            height: 25px;
+            border-radius: 10px;
+            background-color: $mainColour;
+            position: relative;
+            bottom: 33%;
+            left: 83%;
+            // text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
+
+
 }
 
 
-  
