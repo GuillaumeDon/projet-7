@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz@9..40&display=swap");
+.header {
+  background-image: url(../pictures/header/cover-picture.png);
+  background-repeat: none;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}
+.header-logo {
+  margin: 50px;
+  width: 207px;
+  height: 25px;
+}
+.header-title {
+  color: #FFD15B;
+  font-size: 44px;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+}
+.header-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-form-input {
+  width: 60%;
+  height: 44px;
+  position: relative;
+}
+.header-form-icon {
+  position: absolute;
+  right: 260px;
+}/*# sourceMappingURL=main.css.map */

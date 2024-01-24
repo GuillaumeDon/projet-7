@@ -1,0 +1,39 @@
+.header
+{
+    background-image: url(../pictures/header/cover-picture.png);
+    background-repeat: none;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+
+    &-logo{
+    margin: 50px;
+    width: 207px;
+    height: 25px;
+    }
+
+    &-title{
+    color: $h1Colour;
+    font-size: 44px;
+    font-family: $fontFamily;
+    text-align: center;}
+
+    &-form{
+        // background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-input{
+            width: 60%;
+            height: 44px;
+            position: relative;
+        }
+
+        &-icon{
+            position: absolute;
+            right: 260px;
+        }
+    }
+
+}
