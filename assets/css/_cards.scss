@@ -1,3 +1,7 @@
+p{
+    margin-bottom: 1px;
+}
+
 .container-recipe-cards{
 
     display: grid;
@@ -69,6 +73,7 @@
 
             &-time{
                 padding: 0 !important;
+                margin-top: none;
             }
         }
 

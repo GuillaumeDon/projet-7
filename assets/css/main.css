@@ -9,6 +9,10 @@ ul {
   list-style-type: none;
 }
 
+.btn {
+  background-color: whitesmoke;
+}
+
 .header {
   background-image: url(../pictures/header/cover-picture.png);
   background-repeat: none;
@@ -49,7 +53,7 @@ ul {
   display: flex;
   justify-content: space-between;
   position: relative;
-  margin: 10px 60px 0px 60px;
+  margin: 10px 60px 10px 60px;
 }
 .container-filtres-tags {
   display: flex;
@@ -63,6 +67,10 @@ ul {
 }
 .container-filtres-results {
   font-weight: bold;
+}
+
+p {
+  margin-bottom: 1px;
 }
 
 .container-recipe-cards {
@@ -116,6 +124,7 @@ ul {
 }
 .container-recipe-cards-item-containerTime-time {
   padding: 0 !important;
+  margin-top: none;
 }
 .container-recipe-cards-item-secondTitle, .container-recipe-cards-item-thirdTitle,
 .container-recipe-cards-item .grey-title {
