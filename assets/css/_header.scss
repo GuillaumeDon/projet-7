@@ -28,15 +28,16 @@
         align-items: center;
 
         &-input{
-            width: 60%;
+            width: 65%;
             height: 44px;
             position: relative;
-            border-radius: 15px;
+            border-radius: 10px;
+            border: 0;
         }
 
         &-icon{
             position: absolute;
-            right: 21%;
+            right: 19%;
             height: 40px;
         }
     }

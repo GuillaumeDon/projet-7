@@ -1,0 +1,10 @@
+.container-filtres{
+
+    display: flex;
+
+    &-tags{
+        display: flex;
+        gap: 20px;
+       background-color: red;
+    }
+}

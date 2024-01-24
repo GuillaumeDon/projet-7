@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz@9..40&display=swap");
+body {
+  margin: auto;
+}
+
 .header {
   background-image: url(../pictures/header/cover-picture.png);
   background-repeat: none;
@@ -23,13 +27,23 @@
   align-items: center;
 }
 .header-form-input {
-  width: 60%;
+  width: 65%;
   height: 44px;
   position: relative;
-  border-radius: 15px;
+  border-radius: 10px;
+  border: 0;
 }
 .header-form-icon {
   position: absolute;
-  right: 21%;
+  right: 19%;
   height: 40px;
+}
+
+.container-filtres {
+  display: flex;
+}
+.container-filtres-tags {
+  display: flex;
+  gap: 20px;
+  background-color: red;
 }/*# sourceMappingURL=main.css.map */
