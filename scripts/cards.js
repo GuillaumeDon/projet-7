@@ -33,7 +33,8 @@ function displayRecipeCards() {
 
         const description = document.createElement('p');
         description.classList.add('container-recipe-cards-item-description');
-        description.textContent = recipe.description;
+        // description.textContent = recipe.description;
+        description.textContent = truncateDescription(recipe.description);
         recipeCard.appendChild(description);
 
         const thirdTitle = document.createElement('h4');
@@ -55,6 +56,11 @@ function displayRecipeCards() {
 
         recipeCardsContainer.appendChild(recipeCard);
     });
+
+    function truncateDescription(description) {
+        const maxLength = 140;
+        return description.length > maxLength ? description.substring(0, maxLength) + '...' : description;
+      }
 }
 
 // Appeler la fonction pour afficher les cartes de recette au chargement de la page

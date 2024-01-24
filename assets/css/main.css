@@ -1,10 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz@9..40&display=swap");
 body {
-  margin: auto;
-}
-
-body {
   background-color: #C6C6C6;
+  margin: auto;
 }
 
 ul {
@@ -72,10 +69,12 @@ ul {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   position: relative;
+  margin: 0px 30px;
 }
 .container-recipe-cards-item {
   background-color: whitesmoke;
   border-radius: 10px;
+  height: 730px;
 }
 .container-recipe-cards-item-img {
   width: 100%;
@@ -87,6 +86,7 @@ ul {
 .container-recipe-cards-item-ingredientsList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  padding: 20px;
 }
 .container-recipe-cards-item-containerTime {
   width: 60px;
@@ -99,4 +99,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.container-recipe-cards-item-secondTitle, .container-recipe-cards-item-thirdTitle,
+.container-recipe-cards-item .grey-title {
+  color: grey;
 }/*# sourceMappingURL=main.css.map */
