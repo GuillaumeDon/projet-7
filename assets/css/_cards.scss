@@ -1,0 +1,19 @@
+.container-recipe-cards{
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // Crée trois colonnes de taille égale
+    gap: 20px; // Espace entre les cartes
+  
+
+    img{
+        width: 200px;
+        height: 200px;
+    }
+
+    &-item{
+        background-color: whitesmoke;
+    }
+}
+
+
+  

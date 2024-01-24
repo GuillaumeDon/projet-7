@@ -61,4 +61,17 @@ body {
 }
 .container-filtres-results {
   font-weight: bold;
+}
+
+.container-recipe-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.container-recipe-cards img {
+  width: 200px;
+  height: 200px;
+}
+.container-recipe-cards-item {
+  background-color: whitesmoke;
 }/*# sourceMappingURL=main.css.map */
