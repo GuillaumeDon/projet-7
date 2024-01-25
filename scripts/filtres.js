@@ -99,6 +99,7 @@ ustensilsUl.addEventListener("click", (event) => {
 // Fonction pour ajouter un élément à la liste de choix
 function addFilterItem(ulElement, itemName) {
     const li = document.createElement("li");
+    li.classList.add('tag'); //test
     li.textContent = itemName;
 
     const img = document.createElement("img");
@@ -120,4 +121,39 @@ const closeIcon = document.querySelector(".header-form-close");
 
 closeIcon.addEventListener("click", () => {
     searchInput.value = "";
+});
+
+
+// Fonction pour filtrer les éléments de la liste en fonction de la saisie de l'utilisateur
+function filterDropdownList(filterInput, ulElement) {
+    const inputValue = filterInput.value.toLowerCase().trim();
+    const items = ulElement.querySelectorAll("li");
+
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(inputValue)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+
+
+
+const ingredientsList = document.querySelector(".container-filtres-tags-tag1 .dropdown-menu ul");
+const appliancesList = document.querySelector(".container-filtres-tags-tag2 .dropdown-menu ul");
+const ustensilsList = document.querySelector(".container-filtres-tags-tag3 .dropdown-menu ul");
+
+// Écoutez les événements d'entrée utilisateur dans les barres de recherche
+ingredientsInput.addEventListener("input", () => {
+    filterDropdownList(ingredientsInput, ingredientsList);
+});
+
+appliancesInput.addEventListener("input", () => {
+    filterDropdownList(appliancesInput, appliancesList);
+});
+
+ustensilsInput.addEventListener("input", () => {
+    filterDropdownList(ustensilsInput, ustensilsList);
 });

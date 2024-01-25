@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les petits plats</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <link href="./assets/css/main.css" rel="stylesheet">
 </head>
 
@@ -18,7 +21,7 @@
         <form class="header-form">
             <input class="header-form-input" type="text" id="search" name="search"
                 placeholder="Rechercher une recette, un ingrédient,...">
-                <img class="header-form-close logoCloseHeader" src="./assets/pictures/icons/close.png">
+            <img class="header-form-close logoCloseHeader" src="./assets/pictures/icons/close.png">
             <img class="header-form-icon" src="./assets/pictures/icons/search-logo.png" alt="icon de recherche">
         </form>
     </header>
@@ -26,95 +29,84 @@
     <main>
         <div class="container-filtres">
             <div class="container-filtres-tags">
-                
+
                 <!--Zone de test-->
-       <!-- Ingrédients -->
-<div class="container-filtres-tags-tag1" id="ingredients">
-    <div class="dropdown">
-        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            Ingrédients
-        </button>
-        <div class="dropdown-menu">
-            <form class="p-4">
-                <div class="mb-3">
-                    <label for="ingredientsDropdown" class="form-label">Ingrédients</label>
-                    <input type="text" class="form-control" id="ingredientsDropdown">
-                    <img class="container-filtres-tags-tag1-logo logoClose" src="./assets/pictures/icons/close.png">
-                    <img class="container-filtres-tags-tag1-logo logoFilter" src="./assets/pictures/icons/loupe.png">
+                <!-- Ingrédients -->
+                <div class="container-filtres-tags-tag1" id="ingredients">
+                    <div class="dropdown">
+                        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false" data-bs-auto-close="outside">
+                            Ingrédients
+                        </button>
+                        <div class="dropdown-menu">
+                            <form class="p-4">
+                                <div class="mb-3">
+                                    <label for="ingredientsDropdown" class="form-label">Ingrédients</label>
+                                    <input type="text" class="form-control" id="ingredientsDropdown" data-filter="ingredients">
+                                    <img class="container-filtres-tags-tag1-logo logoClose"
+                                        src="./assets/pictures/icons/close.png">
+                                    <img class="container-filtres-tags-tag1-logo logoFilter"
+                                        src="./assets/pictures/icons/loupe.png">
+                                </div>
+                            </form>
+                            <ul></ul>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <ul></ul>
-        </div>
-    </div>
-</div>
 
-<!-- Appareils -->
-<div class="container-filtres-tags-tag2" id="appliances">
-    <div class="dropdown">
-        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            Appareils
-        </button>
-        <div class="dropdown-menu">
-            <form class="p-4">
-                <div class="mb-3">
-                    <label for="appliancesDropdown" class="form-label">Appareils</label>
-                    <input type="text" class="form-control" id="appliancesDropdown">
-                    <img class="container-filtres-tags-tag2-logo logoClose" src="./assets/pictures/icons/close.png">
-                    <img class="container-filtres-tags-tag2-logo logoFilter" src="./assets/pictures/icons/loupe.png">
+                <!-- Appareils -->
+                <div class="container-filtres-tags-tag2" id="appliances">
+                    <div class="dropdown">
+                        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false" data-bs-auto-close="outside">
+                            Appareils
+                        </button>
+                        <div class="dropdown-menu">
+                            <form class="p-4">
+                                <div class="mb-3">
+                                    <label for="appliancesDropdown" class="form-label">Appareils</label>
+                                    <input type="text" class="form-control" id="appliancesDropdown" data-filter="appliances">
+                                    <img class="container-filtres-tags-tag2-logo logoClose"
+                                        src="./assets/pictures/icons/close.png">
+                                    <img class="container-filtres-tags-tag2-logo logoFilter"
+                                        src="./assets/pictures/icons/loupe.png">
 
+                                </div>
+                            </form>
+                            <ul></ul>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <ul></ul>
-        </div>
-    </div>
-</div>
 
-<!-- Ustensiles -->
-<div class="container-filtres-tags-tag3" id="ustensils">
-    <div class="dropdown">
-        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            Ustensiles
-        </button>
-        <div class="dropdown-menu">
-            <form class="p-4">
-                <div class="mb-3">
-                    <label for="ustensilsDropdown" class="form-label">Ustensiles</label>
-                    <input type="text" class="form-control" id="ustensilsDropdown">
-                    <img class="container-filtres-tags-tag3-logo logoClose" src="./assets/pictures/icons/close.png">
-                    <img class="container-filtres-tags-tag3-logo logoFilter" src="./assets/pictures/icons/loupe.png">
+                <!-- Ustensiles -->
+                <div class="container-filtres-tags-tag3" id="ustensils">
+                    <div class="dropdown">
+                        <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false" data-bs-auto-close="outside">
+                            Ustensiles
+                        </button>
+                        <div class="dropdown-menu">
+                            <form class="p-4">
+                                <div class="mb-3">
+                                    <label for="ustensilsDropdown" class="form-label">Ustensiles</label>
+                                    <input type="text" class="form-control" id="ustensilsDropdown" data-filter="ustensils">
+                                    <img class="container-filtres-tags-tag3-logo logoClose"
+                                        src="./assets/pictures/icons/close.png">
+                                    <img class="container-filtres-tags-tag3-logo logoFilter"
+                                        src="./assets/pictures/icons/loupe.png">
 
+                                </div>
+                            </form>
+                            <ul></ul>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <ul></ul>
-        </div>
-    </div>
-</div>
 
-                
-                <!-- Fin zone test-->
-                 
-<!-- 
-                    <select class="container-filtres-tags-tag1" name="ingredients" id="ingredients">
-                        <option value="ingredients">Ingrédients</option>
 
-                    </select>
-               
-                
-                    <select class="container-filtres-tags-tag2" name="appliances" id="appliances">
-                        <option value="appliances">Appareils</option>
 
-                    </select>
-               
-                
-                    <select class="container-filtres-tags-tag3" name="ustensils" id="ustensils">
-                        <option value="ustensils">Ustensiles</option>
+            </div>
+            <p class="container-filtres-results"><span class="container-filtres-results-number"></span> recettes</p>
 
-                    </select>
-                 -->
-            
-        </div>
-        <p class="container-filtres-results"><span class="container-filtres-results-number"></span> recettes</p>
-        
         </div>
         <div class="container-filtres-choice">
             <ul class="container-filtres-choice-list">
@@ -130,6 +122,8 @@
     <script src="./scripts/recipes.js"></script>
     <script src="./scripts/filtres.js"></script>
     <script src="./scripts/cards.js"></script>
+    <script src="./scripts/algo.js"></script>
+
 </body>
 
 </html>
