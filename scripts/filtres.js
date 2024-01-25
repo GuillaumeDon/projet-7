@@ -126,19 +126,19 @@ closeIcon.addEventListener("click", () => {
 
 // Fonction pour filtrer les éléments de la liste en fonction de la saisie de l'utilisateur
 function filterDropdownList(filterInput, ulElement) {
-    const inputValue = filterInput.value.toLowerCase().trim();
+    const inputWords = filterInput.value.toLowerCase().trim().split(' ');
     const items = ulElement.querySelectorAll("li");
 
     items.forEach(item => {
         const text = item.textContent.toLowerCase();
-        if (text.includes(inputValue)) {
+        const allWordsMatch = inputWords.every(word => text.includes(word));
+        if (allWordsMatch) {
             item.style.display = "block";
         } else {
             item.style.display = "none";
         }
     });
 }
-
 
 
 const ingredientsList = document.querySelector(".container-filtres-tags-tag1 .dropdown-menu ul");
@@ -157,3 +157,17 @@ appliancesInput.addEventListener("input", () => {
 ustensilsInput.addEventListener("input", () => {
     filterDropdownList(ustensilsInput, ustensilsList);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+

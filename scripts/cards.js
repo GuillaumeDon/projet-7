@@ -74,3 +74,28 @@ function updateRecipeCount() {
 }
 // Appeler la fonction pour afficher les cartes de recette au chargement de la page
 window.onload = displayRecipeCards;
+
+
+
+
+
+
+function filterCardsByTags(selectedTags) {
+    const allCards = document.querySelectorAll('.container-recipe-cards-item'); // Classe de vos cartes
+
+    allCards.forEach(card => {
+        const cardData = {
+            title: card.querySelector('.container-recipe-cards-item-title').textContent.toLowerCase(),
+            description: card.querySelector('.container-recipe-cards-item-description').textContent.toLowerCase(),
+            ingredients: Array.from(card.querySelectorAll('.container-recipe-cards-item-ingredientsList-item')).map(el => el.textContent.toLowerCase())
+        };
+
+        const isMatch = selectedTags.every(tag => 
+            cardData.title.includes(tag) || 
+            cardData.description.includes(tag) ||
+            cardData.ingredients.some(ingredient => ingredient.includes(tag))
+        );
+
+        card.style.display = isMatch ? 'block' : 'none';
+    });
+}
