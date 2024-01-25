@@ -68,12 +68,14 @@ function isItemInList(ulElement, itemName) {
     return false; // L'élément n'existe pas dans la liste
 }
 
-// Ajoutez un gestionnaire d'événements de clic aux éléments de la liste déroulante
 ingredientsUl.addEventListener("click", (event) => {
     if (event.target.tagName === "LI") {
         const selectedIngredient = event.target.textContent;
         if (!isItemInList(choiceList, selectedIngredient)) {
-            addFilterItem(choiceList, selectedIngredient);
+            addFilterItem(choiceList, selectedIngredient, selectedIngredients);
+            selectedIngredients.push(selectedIngredient);
+            console.log(selectedIngredients); // Affiche le tableau dans la console
+
         }
     }
 });
@@ -82,7 +84,10 @@ appliancesUl.addEventListener("click", (event) => {
     if (event.target.tagName === "LI") {
         const selectedAppliance = event.target.textContent;
         if (!isItemInList(choiceList, selectedAppliance)) {
-            addFilterItem(choiceList, selectedAppliance);
+            addFilterItem(choiceList, selectedAppliance, selectedAppliances);
+            selectedAppliances.push(selectedAppliance);
+            console.log(selectedAppliances); // Affiche le tableau dans la console
+
         }
     }
 });
@@ -91,29 +96,51 @@ ustensilsUl.addEventListener("click", (event) => {
     if (event.target.tagName === "LI") {
         const selectedUstensil = event.target.textContent;
         if (!isItemInList(choiceList, selectedUstensil)) {
-            addFilterItem(choiceList, selectedUstensil);
+            addFilterItem(choiceList, selectedUstensil, selectedUstensils);
+            selectedUstensils.push(selectedUstensil);
+            console.log(selectedUstensils); // Affiche le tableau dans la console
+
         }
     }
 });
 
+// Créez trois tableaux pour stocker les éléments sélectionnés dans chaque menu déroulant
+let selectedIngredients = [];
+let selectedAppliances = [];
+let selectedUstensils = [];
+
+
+
+// Fonction pour supprimer un élément d'un tableau
+function removeItemFromArray(array, item) {
+    const index = array.indexOf(item);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+}
+
 // Fonction pour ajouter un élément à la liste de choix
-function addFilterItem(ulElement, itemName) {
+function addFilterItem(ulElement, itemName, array) {
     const li = document.createElement("li");
-    li.classList.add('container-filtres-choice-list-tag'); //test
-    li.textContent = itemName;
+    li.classList.add('container-filtres-choice-list-tag');
+
+    const span = document.createElement("span");
+    span.textContent = itemName;
+    li.appendChild(span);
 
     const img = document.createElement("img");
     img.src = "./assets/pictures/icons/closeTag.png";
     img.classList.add("container-filtres-choice-list-item-logo", "logoTag");
 
     img.addEventListener("click", () => {
-        ulElement.removeChild(li);
+        removeItemFromArray(array, itemName);
+        console.log(array); // Supprime l'élément du tableau
+        ulElement.removeChild(li); // Supprime l'élément <li>
     });
 
     li.appendChild(img);
     ulElement.appendChild(li);
 }
-
 //header filter effacer
 
 const searchInput = document.getElementById("search");
