@@ -65,7 +65,12 @@ function displayRecipeCards() {
         const maxLength = 140;
         return description.length > maxLength ? description.substring(0, maxLength) : description;
       }
+      updateRecipeCount();//MAJ du compteur de recettes
 }
-
+function updateRecipeCount() {
+    const recipeCards = document.querySelectorAll('.container-recipe-cards-item'); // Assurez-vous que le sélecteur correspond à vos cartes de recettes
+    const recipeCount = recipeCards.length;
+    document.querySelector('.container-filtres-results-number').textContent = recipeCount;
+}
 // Appeler la fonction pour afficher les cartes de recette au chargement de la page
 window.onload = displayRecipeCards;
