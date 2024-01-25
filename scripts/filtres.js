@@ -99,7 +99,7 @@ ustensilsUl.addEventListener("click", (event) => {
 // Fonction pour ajouter un élément à la liste de choix
 function addFilterItem(ulElement, itemName) {
     const li = document.createElement("li");
-    li.classList.add('tag'); //test
+    li.classList.add('container-filtres-choice-list-tag'); //test
     li.textContent = itemName;
 
     const img = document.createElement("img");
