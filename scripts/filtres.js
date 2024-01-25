@@ -69,3 +69,43 @@ const closeIcon = document.querySelector(".header-form-close");
 closeIcon.addEventListener("click", () => {
     searchInput.value = "";
 });
+
+
+
+
+
+
+
+
+
+// Récupérez la liste de choix
+const choiceList = document.querySelector(".container-filtres-choice ul");
+
+// Ajoutez un gestionnaire d'événements de clic aux éléments de la liste déroulante
+ingredientsUl.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        const selectedIngredient = event.target.textContent;
+        addFilterItem(choiceList, selectedIngredient);
+    }
+});
+
+appliancesUl.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        const selectedAppliance = event.target.textContent;
+        addFilterItem(choiceList, selectedAppliance);
+    }
+});
+
+ustensilsUl.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        const selectedUstensil = event.target.textContent;
+        addFilterItem(choiceList, selectedUstensil);
+    }
+});
+
+// Fonction pour ajouter un élément à la liste de choix
+function addFilterItem(ulElement, itemName) {
+    const li = document.createElement("li");
+    li.textContent = itemName;
+    ulElement.appendChild(li);
+}
