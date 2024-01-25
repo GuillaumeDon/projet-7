@@ -49,6 +49,10 @@
                 background-color: $mainColour;
                 padding: 10px;
                 border-radius: 10px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap:10px;
             }
         }
     }
