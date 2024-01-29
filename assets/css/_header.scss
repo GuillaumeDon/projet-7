@@ -21,7 +21,10 @@
     color: $mainColour;
     font-size: 44px;
     font-family: $fontTitle;
-    text-align: center;}
+    text-align: center;
+    margin-bottom: 30px;
+}
+    
 
     &-form{
         // background-color: red;
@@ -35,7 +38,7 @@
             position: relative;
             border-radius: 10px;
             border: 0;
-            padding: 20px;
+            padding: 30px;
 
             &:focus{
                 outline: none;

@@ -38,6 +38,7 @@ p {
   font-size: 44px;
   font-family: "Anton", sans-serif;
   text-align: center;
+  margin-bottom: 30px;
 }
 .header-form {
   display: flex;
@@ -50,7 +51,7 @@ p {
   position: relative;
   border-radius: 10px;
   border: 0;
-  padding: 20px;
+  padding: 30px;
 }
 .header-form-input:focus {
   outline: none;
@@ -190,7 +191,7 @@ p {
   background-color: #FFD15B;
   position: relative;
   bottom: 33%;
-  left: 83%;
+  left: 79%;
   display: flex;
   justify-content: center;
   align-items: center;
