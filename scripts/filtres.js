@@ -187,13 +187,6 @@
 
 
 
-
-
-
-
-
-
-
 // Charger les données du fichier JSON
 fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
     .then(response => response.json())
@@ -270,6 +263,17 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 const selectedIngredient = event.target.textContent;
                 if (!isItemInList(choiceList, selectedIngredient)) {
                     addFilterItem(choiceList, selectedIngredient, selectedIngredients);
+
+
+                    const matchingRecipes = recipes.filter(recipe => {
+                        return recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() === selectedIngredient.toLowerCase());
+                    });
+        
+                    // Maintenant, matchingRecipes contient toutes les recettes qui contiennent l'ingrédient sélectionné
+                    console.log(matchingRecipes);
+        
+
+
                     selectedIngredients.push(selectedIngredient);
                     console.log(selectedIngredients); // Affiche le tableau dans la console
 
@@ -282,6 +286,16 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 const selectedAppliance = event.target.textContent;
                 if (!isItemInList(choiceList, selectedAppliance)) {
                     addFilterItem(choiceList, selectedAppliance, selectedAppliances);
+
+                    const matchingRecipes = recipes.filter(recipe => {
+                        return recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase();
+                    });
+        
+                    console.log(matchingRecipes);
+
+
+
+                    
                     selectedAppliances.push(selectedAppliance);
            console.log(selectedAppliances); // Affiche le tableau dans la console
                 }
@@ -293,6 +307,13 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 const selectedUstensil = event.target.textContent;
                 if (!isItemInList(choiceList, selectedUstensil)) {
                     addFilterItem(choiceList, selectedUstensil, selectedUstensils);
+
+                    
+            const matchingRecipes = recipes.filter(recipe => {
+                return recipe.ustensils.some(ustensil => ustensil.toLowerCase() === selectedUstensil.toLowerCase());
+            });
+
+            console.log(matchingRecipes);
                    selectedUstensils.push(selectedUstensil);
                     console.log(selectedUstensils); // Affiche le tableau dans la console
 
@@ -383,12 +404,6 @@ ustensilsInput.addEventListener("input", () => {
     .catch(error => {
         console.error('Erreur lors du chargement du fichier JSON :', error);
     });
-
-
-
-
-
-
 
 });
 
