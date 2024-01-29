@@ -50,6 +50,10 @@ p {
   position: relative;
   border-radius: 10px;
   border: 0;
+  padding: 20px;
+}
+.header-form-input:focus {
+  outline: none;
 }
 .header-form-icon {
   position: absolute;
