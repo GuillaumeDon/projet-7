@@ -201,6 +201,14 @@ p {
   overflow-y: auto;
 }
 
+.dropdown-toggle[aria-expanded=true]::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-toggle[aria-expanded=false]::after {
+  transform: rotate(0deg);
+}
+
 .logoFilter {
   position: absolute;
   top: 75px;

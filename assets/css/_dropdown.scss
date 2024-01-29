@@ -24,3 +24,14 @@ padding: 10px 0px 10px 30px;
     max-height: 250px;
      overflow-y: auto;
 }
+
+
+
+.dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg); 
+  }
+  
+
+  .dropdown-toggle[aria-expanded="false"]::after {
+    transform: rotate(0deg); 
+  }
