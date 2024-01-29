@@ -39,6 +39,28 @@
             position: absolute;
             right: 19%;
             height: 40px;
+            transition: fill 0.3s, stroke 0.3s;
+            
+            &:hover{
+                cursor: pointer;
+            }
+
+            &:hover rect {
+                fill: $mainColour;
+            }
+
+            &:hover circle,
+            &:hover line
+            {
+                stroke: black;
+                fill: black;
+            }
+            
+circle,
+ line {
+    stroke: white;
+    fill: black;
+}
         }
 
         &-close{
@@ -57,6 +79,9 @@
     }
 
 }
+
+
+
 
 
 
