@@ -207,3 +207,6 @@ function truncateDescription(description) {
     const maxLength = 140;
     return description.length > maxLength ? description.substring(0, maxLength) : description;
 }
+
+
+

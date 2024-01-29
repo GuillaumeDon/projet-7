@@ -17,6 +17,10 @@ p {
   font-family: "Manrope", sans-serif;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .header {
   background-image: url(../pictures/header/cover-picture.png);
   background-repeat: none;
