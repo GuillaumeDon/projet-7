@@ -51,7 +51,11 @@ p {
   position: absolute;
   right: 19%;
   height: 40px;
-  transition: fill 0.3s, stroke 0.3s;
+}
+.header-form-icon rect,
+.header-form-icon circle,
+.header-form-icon line {
+  transition: fill 0.5s ease, stroke 0.5s ease;
 }
 .header-form-icon:hover {
   cursor: pointer;
@@ -59,7 +63,11 @@ p {
 .header-form-icon:hover rect {
   fill: #FFD15B;
 }
-.header-form-icon:hover circle, .header-form-icon:hover line {
+.header-form-icon:hover circle {
+  stroke: black;
+  fill: #FFD15B;
+}
+.header-form-icon:hover line {
   stroke: black;
   fill: black;
 }
