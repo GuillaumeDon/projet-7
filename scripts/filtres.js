@@ -271,6 +271,8 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 if (!isItemInList(choiceList, selectedIngredient)) {
                     addFilterItem(choiceList, selectedIngredient, selectedIngredients);
                     selectedIngredients.push(selectedIngredient);
+                    console.log(selectedIngredients); // Affiche le tableau dans la console
+
                 }
             }
         });
@@ -280,6 +282,8 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 const selectedAppliance = event.target.textContent;
                 if (!isItemInList(choiceList, selectedAppliance)) {
                     addFilterItem(choiceList, selectedAppliance, selectedAppliances);
+                    selectedAppliances.push(selectedAppliance);
+           console.log(selectedAppliances); // Affiche le tableau dans la console
                 }
             }
         });
@@ -289,6 +293,9 @@ fetch('data/recipes.json') // Assurez-vous de spécifier le bon chemin d'accès
                 const selectedUstensil = event.target.textContent;
                 if (!isItemInList(choiceList, selectedUstensil)) {
                     addFilterItem(choiceList, selectedUstensil, selectedUstensils);
+                   selectedUstensils.push(selectedUstensil);
+                    console.log(selectedUstensils); // Affiche le tableau dans la console
+
                 }
             }
         });
