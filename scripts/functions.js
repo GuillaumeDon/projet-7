@@ -53,3 +53,14 @@ closeIcons.forEach((icon) => {
         icon.classList.add("hidden"); // Masquez l'icône
     });
 });
+
+
+
+
+
+
+
+
+
+
+
