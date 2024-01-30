@@ -398,13 +398,46 @@ closeIcon.addEventListener("click", () => {
     searchInput.value = "";
 });
 
-// Comparez les tableaux sélectionnés avec le tableau de recettes
+// Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
+// function updateFilteredRecipes() {
+//     const matchingRecipes = [];
+//     let recipeCountElement = document.querySelector('.container-filtres-results-number');
+
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+
+//         // Vérifiez si tous les ingrédients sélectionnés sont présents dans la recette
+//         const ingredientsMatch = selectedIngredients.every(selectedIngredient => {
+//             return recipe.ingredients.some(ingredient => {
+//                 return ingredient.ingredient.toLowerCase() === selectedIngredient.toLowerCase();
+//             });
+//         });
+
+//         // Vérifiez si tous les ustensiles sélectionnés sont présents dans la recette
+//         const utensilsMatch = selectedUstensils.every(selectedUtensil => {
+//             return recipe.ustensils.some(utensil => {
+//                 return utensil.toLowerCase() === selectedUtensil.toLowerCase();
+//             });
+//         });
+
+//         // Vérifiez si tous les appareils sélectionnés sont présents dans la recette
+//         const appliancesMatch = selectedAppliances.every(selectedAppliance => {
+//             return recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase();
+//         });
+
+//         // Si tous les ingrédients, ustensiles et appareils sélectionnés sont présents dans la recette, ajoutez la recette à matchingRecipes
+//         if (ingredientsMatch && utensilsMatch && appliancesMatch) {
+//             matchingRecipes.push(recipe);
+//         }
+//     }
+
+//     // Mettez à jour le nombre de recettes correspondantes affiché
+//     recipeCountElement.textContent = matchingRecipes.length;
+// }
 function updateFilteredRecipes() {
-    const matchingRecipes = [];
+    let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-
+    const matchingRecipes = recipes.filter(recipe => {
         // Vérifiez si tous les ingrédients sélectionnés sont présents dans la recette
         const ingredientsMatch = selectedIngredients.every(selectedIngredient => {
             return recipe.ingredients.some(ingredient => {
@@ -412,24 +445,24 @@ function updateFilteredRecipes() {
             });
         });
 
-        // Vérifiez si l'appareil sélectionné correspond à l'appareil de la recette
-        const applianceMatch = selectedAppliances.length === 0 || selectedAppliances.includes(recipe.appliance.toLowerCase());
-
         // Vérifiez si tous les ustensiles sélectionnés sont présents dans la recette
-        const ustensilsMatch = selectedUstensils.every(selectedUstensil => {
-            return recipe.ustensils.some(ustensil => {
-                return ustensil.toLowerCase() === selectedUstensil.toLowerCase();
+        const utensilsMatch = selectedUstensils.every(selectedUtensil => {
+            return recipe.ustensils.some(utensil => {
+                return utensil.toLowerCase() === selectedUtensil.toLowerCase();
             });
         });
 
-        // Si toutes les conditions sont remplies, ajoutez la recette aux résultats filtrés
-        if (ingredientsMatch && applianceMatch && ustensilsMatch) {
-            matchingRecipes.push(recipe);
-        }
-    }
+        // Vérifiez si tous les appareils sélectionnés sont présents dans la recette
+        const appliancesMatch = selectedAppliances.every(selectedAppliance => {
+            return recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase();
+        });
 
-    // Affichez les recettes filtrées dans la console
-    console.log("Recettes filtrées :", matchingRecipes);
+        // Si tous les ingrédients, ustensiles et appareils sélectionnés sont présents dans la recette, la recette correspond
+        return ingredientsMatch && utensilsMatch && appliancesMatch;
+    });
+
+    // Mettez à jour le nombre de recettes correspondantes affiché
+    recipeCountElement.textContent = matchingRecipes.length;
 }
 
 // Vous pouvez appeler updateFilteredRecipes() chaque fois que les éléments sont ajoutés ou supprimés.
