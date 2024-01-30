@@ -148,7 +148,7 @@ p {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   position: relative;
-  margin: 0px 30px;
+  margin: 0px 30px 50px 0px;
 }
 @media screen and (max-width: 800px) {
   .container-recipe-cards {
