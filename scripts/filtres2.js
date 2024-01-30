@@ -57,6 +57,9 @@ ingredientsUl.addEventListener("click", (event) => {
         const selectedIngredient = event.target.textContent;
         if (!isItemInList(choiceList, selectedIngredient)) {
             addFilterItem(choiceList, selectedIngredient, selectedIngredients);
+
+
+            console.log(selectedIngredients);
         }
     }
 });
@@ -66,6 +69,9 @@ appliancesUl.addEventListener("click", (event) => {
         const selectedAppliance = event.target.textContent;
         if (!isItemInList(choiceList, selectedAppliance)) {
             addFilterItem(choiceList, selectedAppliance, selectedAppliances);
+
+            console.log(selectedAppliances);
+
         }
     }
 });
@@ -75,6 +81,9 @@ ustensilsUl.addEventListener("click", (event) => {
         const selectedUstensil = event.target.textContent;
         if (!isItemInList(choiceList, selectedUstensil)) {
             addFilterItem(choiceList, selectedUstensil, selectedUstensils);
+
+            console.log(selectedUstensils);
+
         }
     }
 });
@@ -156,6 +165,7 @@ ingredientsCloseIcon.addEventListener("click", () => {
     resetFilterList(ingredientsUl);
     selectedIngredients = [];
     choiceList.innerHTML = "";
+    
 });
 
 appliancesCloseIcon.addEventListener("click", () => {
