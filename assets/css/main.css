@@ -87,7 +87,7 @@ p {
 }
 .header-form-close {
   position: absolute;
-  bottom: 315px;
+  bottom: 386px;
   right: 25%;
   width: 20px;
   height: 20px;
@@ -148,7 +148,7 @@ p {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   position: relative;
-  margin: 0px 30px 50px 0px;
+  margin: 0px 30px 50px 30px;
 }
 @media screen and (max-width: 800px) {
   .container-recipe-cards {

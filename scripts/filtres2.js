@@ -254,7 +254,7 @@ function isItemInList(ulElement, itemName) {
     return false;
 }
 
-// Gérez les interactions utilisateur pour les filtres
+// Gérer les interactions utilisateur pour les filtres
 ingredientsUl.addEventListener("click", (event) => {
     if (event.target.tagName === "LI") {
         const selectedIngredient = event.target.textContent;
@@ -320,11 +320,11 @@ function addFilterItem(ulElement, itemName, array) {
     li.appendChild(img);
     ulElement.appendChild(li);
 
-    // Ajoutez le filtre sélectionné au tableau correspondant
+    // Ajouter le filtre sélectionné au tableau correspondant
     array.push(itemName);
 }
 
-// Écoutez les événements d'entrée utilisateur dans les barres de recherche
+// Écouter les événements d'entrée utilisateur dans les barres de recherche
 ingredientsInput.addEventListener("input", () => {
     filterDropdownList(ingredientsInput, ingredientsUl);
 });
