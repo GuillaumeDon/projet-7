@@ -560,7 +560,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             recipeCard.appendChild(ingredientsList);
         
-            recipesContainer.appendChild(recipeCard); // Assurez-vous que `recipesContainer` est correctement sélectionné avant cette opération
+            recipesContainer.appendChild(recipeCard);
+            const recipesCountElement = document.querySelector('.container-filtres-results-number');
+recipesCountElement.textContent = filteredRecipes.length; 
+
         });
     }
 });
+
+
