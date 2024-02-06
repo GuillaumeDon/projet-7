@@ -472,3 +472,56 @@ function updateFilteredRecipes() {
 
 // Appeler la fonction pour mettre à jour les recettes filtrées initialement
 updateFilteredRecipes();
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('search');
+    const closeButton = document.querySelector('.header-form-close'); 
+
+    // Gestionnaire pour l'input de recherche
+    input.addEventListener('input', updateRecipesDisplay);
+
+    // Gestionnaire pour le clic sur l'icône de fermeture
+    closeButton.addEventListener('click', function() {
+        input.value = ''; // Efface le contenu de l'input
+        updateRecipesDisplay(); // Met à jour l'affichage des recettes
+    });
+
+    function updateRecipesDisplay() {
+        const searchText = input.value.toLowerCase();
+        let filteredRecipes;
+
+        if (searchText.length >= 3) {
+            filteredRecipes = recipes.filter(recipe => {
+                return recipe.name.toLowerCase().includes(searchText) ||
+                       recipe.description.toLowerCase().includes(searchText) ||
+                       recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
+                       recipe.appliance.toLowerCase().includes(searchText) ||
+                       recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+            });
+        } else {
+            filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
+        }
+
+        const recipesContainer = document.getElementById('recipe-cards');
+        recipesContainer.innerHTML = ''; // Vide le conteneur pour les nouveaux résultats
+
+        filteredRecipes.forEach(recipe => {
+            const recipeElement = document.createElement('div');
+            recipeElement.classList.add('recipe');
+
+            const recipeContent = `
+                <h2>${recipe.name}</h2>
+                <p>${recipe.description}</p>
+            `;
+            recipeElement.innerHTML = recipeContent;
+
+            recipesContainer.appendChild(recipeElement);
+        });
+    }
+});
