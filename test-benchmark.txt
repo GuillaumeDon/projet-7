@@ -1,0 +1,35 @@
+algo 1 filter:
+
+
+    const searchText = "tomate";
+    let filteredRecipes; 
+        
+            filteredRecipes = recipes.filter(recipe => {
+                return recipe.name.toLowerCase().includes(searchText) ||
+                       recipe.description.toLowerCase().includes(searchText) ||
+                       recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
+                       recipe.appliance.toLowerCase().includes(searchText) ||
+                       recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+            });
+
+
+
+algo 2 boucle for
+
+
+        const searchText = "tomate";
+
+    let filteredRecipes = [];
+
+        for (let i = 0; i < recipes.length; i++) {
+            const recipe = recipes[i];
+            const ingredientsMatch = recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText));
+
+            if (recipe.name.toLowerCase().includes(searchText) ||
+                recipe.description.toLowerCase().includes(searchText) ||
+                ingredientsMatch ||
+                recipe.appliance.toLowerCase().includes(searchText) ||
+                recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText))) {
+                filteredRecipes.push(recipe);
+            }
+        }

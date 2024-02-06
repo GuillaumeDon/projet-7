@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //Algo 1 avec un filter
     function updateRecipesDisplay() {
         const searchText = input.value.toLowerCase();
-        // let filteredRecipes;
+        // let filteredRecipes;  algo1
 
 //////////////ALGO 2//////////////////////
     let filteredRecipes = [];
@@ -538,9 +538,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-//Algo 2 avec boucle for
+
+
+//ALGO 1 ENTIER
+
 // function updateRecipesDisplay() {
 //     const searchText = input.value.toLowerCase();
+//     let filteredRecipes; 
+//          if (searchText.length >= 3) {
+//             filteredRecipes = recipes.filter(recipe => {
+//                 return recipe.name.toLowerCase().includes(searchText) ||
+//                        recipe.description.toLowerCase().includes(searchText) ||
+//                        recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
+//                        recipe.appliance.toLowerCase().includes(searchText) ||
+//                        recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+//             });
+//     } else {
+//         filteredRecipes = recipes; 
+
+//     }
+
+
+
+
+    //ALGO 2 ENTIER
+
+//     function updateRecipesDisplay() {
+//         const searchText = input.value.toLowerCase();
+
 //     let filteredRecipes = [];
 
 //     if (searchText.length >= 3) {
@@ -556,16 +581,9 @@ document.addEventListener('DOMContentLoaded', function() {
 //                 filteredRecipes.push(recipe);
 //             }
 //         }
-//     } else {
-//         filteredRecipes = recipes;
-//     }
+// } else {
+//     filteredRecipes = recipes; 
 // }
-
-
-
-
-
-
 
         const recipesContainer = document.getElementById('recipe-cards');
         recipesContainer.innerHTML = ''; // Vide le conteneur pour les nouveaux résultats
