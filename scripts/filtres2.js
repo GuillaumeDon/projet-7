@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             const description = document.createElement('p');
             description.classList.add('container-recipe-cards-item-description');
-            description.textContent = recipe.description; // Assurez-vous d'avoir une fonction pour tronquer la description si nécessaire
+            description.textContent = recipe.description; 
             recipeCard.appendChild(description);
         
             const thirdTitle = document.createElement('h4');
@@ -631,7 +631,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const ingredientItem = document.createElement('li');
                 ingredientItem.classList.add('container-recipe-cards-item-ingredientsList-item');
         
-                const ingredientText = `${ingredient.ingredient}: ${ingredient.quantity || ''} ${ingredient.unit || ''}`;
+                // const ingredientText = `${ingredient.ingredient}: ${ingredient.quantity || ''} ${ingredient.unit || ''}`;            const ingredientText = `${ingredient.ingredient}<br><span class="grey-title">${ingredient.quantity || '-'} ${ingredient.unit || ''} </span>`;
+                const ingredientText = `${ingredient.ingredient}<br><span class="grey-title">${ingredient.quantity || '-'} ${ingredient.unit || ''} </span>`;
+
                 ingredientItem.innerHTML = ingredientText;
                 ingredientsList.appendChild(ingredientItem);
             });
