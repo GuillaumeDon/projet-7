@@ -399,13 +399,68 @@ closeIcon.addEventListener("click", () => {
 });
 
 // Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
+function updateFilteredRecipes() {
+    const matchingRecipes = [];
+    let recipeCountElement = document.querySelector('.container-filtres-results-number');
+
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+        let ingredientsMatch = true;
+
+        for (let j = 0; j < selectedIngredients.length; j++) {
+            let ingredientFound = false;
+            for (let k = 0; k < recipe.ingredients.length; k++) {
+                if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
+                    ingredientFound = true;
+                    break;
+                }
+            }
+            if (!ingredientFound) {
+                ingredientsMatch = false;
+                break;
+            }
+        }
+
+        let utensilsMatch = true;
+for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
+    let utensilFound = false;
+    for (let k = 0; k < recipe.ustensils.length; k++) {
+        if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
+            utensilFound = true;
+            break; // Sort de la boucle si l'ustensile est trouvé
+        }
+    }
+    if (!utensilFound) {
+        utensilsMatch = false; // Si un ustensile sélectionné n'est pas trouvé, sort de la boucle
+        break;
+    }
+}
+
+let appliancesMatch = true;
+// Pas besoin de boucle ici si on suppose qu'il y a un seul appareil par recette
+if (selectedAppliances.length > 0 && selectedAppliances[0].toLowerCase() !== recipe.appliance.toLowerCase()) {
+    appliancesMatch = false;
+}
+
+if (ingredientsMatch && utensilsMatch && appliancesMatch) {
+    matchingRecipes.push(recipe);
+}
+
+
+        if (ingredientsMatch  && utensilsMatch && appliancesMatch ) {
+            matchingRecipes.push(recipe);
+        }
+    }
+
+    recipeCountElement.textContent = matchingRecipes.length;
+}
+
+
+
 // function updateFilteredRecipes() {
-//     const matchingRecipes = [];
 //     let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
-//     for (let i = 0; i < recipes.length; i++) {
-//         const recipe = recipes[i];
-
+//     const matchingRecipes = recipes.filter(recipe => {
 //         // Vérifiez si tous les ingrédients sélectionnés sont présents dans la recette
 //         const ingredientsMatch = selectedIngredients.every(selectedIngredient => {
 //             return recipe.ingredients.some(ingredient => {
@@ -425,53 +480,16 @@ closeIcon.addEventListener("click", () => {
 //             return recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase();
 //         });
 
-//         // Si tous les ingrédients, ustensiles et appareils sélectionnés sont présents dans la recette, ajoutez la recette à matchingRecipes
-//         if (ingredientsMatch && utensilsMatch && appliancesMatch) {
-//             matchingRecipes.push(recipe);
-//         }
-//     }
+//         // Si tous les ingrédients, ustensiles et appareils sélectionnés sont présents dans la recette, la recette correspond
+//         return ingredientsMatch && utensilsMatch && appliancesMatch;
+//     });
 
 //     // Mettez à jour le nombre de recettes correspondantes affiché
 //     recipeCountElement.textContent = matchingRecipes.length;
 // }
-function updateFilteredRecipes() {
-    let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
-    const matchingRecipes = recipes.filter(recipe => {
-        // Vérifiez si tous les ingrédients sélectionnés sont présents dans la recette
-        const ingredientsMatch = selectedIngredients.every(selectedIngredient => {
-            return recipe.ingredients.some(ingredient => {
-                return ingredient.ingredient.toLowerCase() === selectedIngredient.toLowerCase();
-            });
-        });
-
-        // Vérifiez si tous les ustensiles sélectionnés sont présents dans la recette
-        const utensilsMatch = selectedUstensils.every(selectedUtensil => {
-            return recipe.ustensils.some(utensil => {
-                return utensil.toLowerCase() === selectedUtensil.toLowerCase();
-            });
-        });
-
-        // Vérifiez si tous les appareils sélectionnés sont présents dans la recette
-        const appliancesMatch = selectedAppliances.every(selectedAppliance => {
-            return recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase();
-        });
-
-        // Si tous les ingrédients, ustensiles et appareils sélectionnés sont présents dans la recette, la recette correspond
-        return ingredientsMatch && utensilsMatch && appliancesMatch;
-    });
-
-    // Mettez à jour le nombre de recettes correspondantes affiché
-    recipeCountElement.textContent = matchingRecipes.length;
-}
-
-// Vous pouvez appeler updateFilteredRecipes() chaque fois que les éléments sont ajoutés ou supprimés.
-// Par exemple :
-// selectedIngredients.push("nouvel ingrédient"); // Exemple d'ajout d'un nouvel ingrédient
+// t
 // updateFilteredRecipes();
-
-// Appeler la fonction pour mettre à jour les recettes filtrées initialement
-updateFilteredRecipes();
 
 
 
