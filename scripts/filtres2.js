@@ -197,6 +197,8 @@ closeIcon.addEventListener("click", () => {
 
 // Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
 function updateFilteredRecipes() {
+
+    
     const matchingRecipes = [];
     let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
