@@ -145,6 +145,7 @@ function filterDropdownList(filterInput, ulElement) {
             item.style.display = "none";
         }
     });
+    // updateRecipesDisplay();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -215,50 +216,50 @@ closeIcon.addEventListener("click", () => {
 });
 
 // Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
-// function updateFilteredRecipes() {
-//     const matchingRecipes = [];
-//     let recipeCountElement = document.querySelector('.container-filtres-results-number');
+function updateFilteredRecipes() {
+    const matchingRecipes = [];
+    let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
-//     for (let i = 0; i < recipes.length; i++) {
-//         const recipe = recipes[i];
-//         let ingredientsMatch = true, utensilsMatch = true, appliancesMatch = true;
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+        let ingredientsMatch = true, utensilsMatch = true, appliancesMatch = true;
 
-//         // Vérification des ingrédients
-//         for (let j = 0; j < selectedIngredients.length && ingredientsMatch; j++) {
-//             let ingredientFound = false;
-//             for (let k = 0; k < recipe.ingredients.length; k++) {
-//                 if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
-//                     ingredientFound = true;
-//                     break;
-//                 }
-//             }
-//             if (!ingredientFound) ingredientsMatch = false;
-//         }
+        // Vérification des ingrédients
+        for (let j = 0; j < selectedIngredients.length && ingredientsMatch; j++) {
+            let ingredientFound = false;
+            for (let k = 0; k < recipe.ingredients.length; k++) {
+                if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
+                    ingredientFound = true;
+                    break;
+                }
+            }
+            if (!ingredientFound) ingredientsMatch = false;
+        }
 
-//         // Vérification des ustensiles
-//         for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
-//             let utensilFound = false;
-//             for (let k = 0; k < recipe.ustensils.length; k++) {
-//                 if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
-//                     utensilFound = true;
-//                     break;
-//                 }
-//             }
-//             if (!utensilFound) utensilsMatch = false;
-//         }
+        // Vérification des ustensiles
+        for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
+            let utensilFound = false;
+            for (let k = 0; k < recipe.ustensils.length; k++) {
+                if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
+                    utensilFound = true;
+                    break;
+                }
+            }
+            if (!utensilFound) utensilsMatch = false;
+        }
 
-//         // Vérification des appareils
-//         if (selectedAppliances.length > 0 && recipe.appliance.toLowerCase() !== selectedAppliances[0].toLowerCase()) {
-//             appliancesMatch = false;
-//         }
+        // Vérification des appareils
+        if (selectedAppliances.length > 0 && recipe.appliance.toLowerCase() !== selectedAppliances[0].toLowerCase()) {
+            appliancesMatch = false;
+        }
 
-//         if (ingredientsMatch && utensilsMatch && appliancesMatch) {
-//             matchingRecipes.push(recipe);
-//         }
-//     }
+        if (ingredientsMatch && utensilsMatch && appliancesMatch) {
+            matchingRecipes.push(recipe);
+        }
+    }
 
-//     recipeCountElement.textContent = matchingRecipes.length.toString();
-// }
+    recipeCountElement.textContent = matchingRecipes.length.toString();
+}
 
 
 
