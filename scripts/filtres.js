@@ -262,50 +262,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    //Algo 1 avec un filter
-    function updateRecipesDisplay() {
-        const searchText = input.value.toLowerCase();
-        let filteredRecipes; 
-             if (searchText.length >= 3) {
-                filteredRecipes = recipes.filter(recipe => {
-                    return recipe.name.toLowerCase().includes(searchText) ||
-                           recipe.description.toLowerCase().includes(searchText) ||
-                           recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
-                           recipe.appliance.toLowerCase().includes(searchText) ||
-                           recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
-                });
-        } else {
-            filteredRecipes = recipes; 
-    
+
+//Algo 1 avec des boucles
+
+function updateRecipesDisplay() {
+    const searchText = input.value.toLowerCase();
+    let filteredRecipes;
+
+    if (searchText.length >= 3) {
+        filteredRecipes = [];
+        for (let i = 0; i < recipes.length; i++) {
+            const recipe = recipes[i];
+            let matchesSearch = false;
+
+            // Vérification du nom de la recette
+            if (recipe.name.toLowerCase().includes(searchText)) {
+                matchesSearch = true;
+            }
+
+            // Vérification de la description de la recette
+            if (!matchesSearch && recipe.description.toLowerCase().includes(searchText)) {
+                matchesSearch = true;
+            }
+
+            // Vérification des ingrédients de la recette
+            if (!matchesSearch) {
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    const ingredient = recipe.ingredients[j];
+                    if (ingredient.ingredient.toLowerCase().includes(searchText)) {
+                        matchesSearch = true;
+                        break;
+                    }
+                }
+            }
+
+            // Vérification de l'appareil de la recette
+            if (!matchesSearch && recipe.appliance.toLowerCase().includes(searchText)) {
+                matchesSearch = true;
+            }
+
+            // Vérification des ustensiles de la recette
+            if (!matchesSearch) {
+                for (let j = 0; j < recipe.ustensils.length; j++) {
+                    const ustensil = recipe.ustensils[j];
+                    if (ustensil.toLowerCase().includes(searchText)) {
+                        matchesSearch = true;
+                        break;
+                    }
+                }
+            }
+
+            if (matchesSearch) {
+                filteredRecipes.push(recipe);
+            }
         }
+    } else {
+        filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
+    }
 
 
 
+        //Algo 2 avec un filter
+    // function updateRecipesDisplay() {
+    //     const searchText = input.value.toLowerCase();
+    //     let filteredRecipes; 
+    //          if (searchText.length >= 3) {
+    //             filteredRecipes = recipes.filter(recipe => {
+    //                 return recipe.name.toLowerCase().includes(searchText) ||
+    //                        recipe.description.toLowerCase().includes(searchText) ||
+    //                        recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
+    //                        recipe.appliance.toLowerCase().includes(searchText) ||
+    //                        recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+    //             });
+    //     } else {
+    //         filteredRecipes = recipes; 
+    
+    //     }
 
 
-//Algo 2
-
-//     function updateRecipesDisplay() {
-//         const searchText = input.value.toLowerCase();
-
-//     let filteredRecipes = [];
-
-//     if (searchText.length >= 3) {
-//         for (let i = 0; i < recipes.length; i++) {
-//             const recipe = recipes[i];
-//             const ingredientsMatch = recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText));
-
-//             if (recipe.name.toLowerCase().includes(searchText) ||
-//                 recipe.description.toLowerCase().includes(searchText) ||
-//                 ingredientsMatch ||
-//                 recipe.appliance.toLowerCase().includes(searchText) ||
-//                 recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText))) {
-//                 filteredRecipes.push(recipe);
-//             }
-//         }
-// } else {
-//     filteredRecipes = recipes; 
-// }
 
 
 
