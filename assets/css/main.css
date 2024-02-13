@@ -95,6 +95,16 @@ p {
 .header-form-close:hover {
   cursor: pointer;
 }
+.header-form-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  width: 60%;
+  height: 50px;
+  margin: auto;
+}
 
 .container-filtres {
   display: flex;
@@ -137,6 +147,10 @@ p {
   justify-content: space-around;
   align-items: center;
   gap: 10px;
+}
+
+.result-maj {
+  text-transform: uppercase;
 }
 
 p {

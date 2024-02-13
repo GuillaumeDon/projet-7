@@ -62,7 +62,3 @@ closeIcons.forEach((icon) => {
 
 
 
-
-
-
-

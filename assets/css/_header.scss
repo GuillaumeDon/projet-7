@@ -95,6 +95,17 @@ circle,
         &-close:hover{
             cursor: pointer;
         }
+
+        &-error{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-color: red;
+           color: white;
+           width: 60%;
+           height: 50px;
+           margin: auto;
+        }
     }
 
 }
