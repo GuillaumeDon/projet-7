@@ -215,50 +215,50 @@ closeIcon.addEventListener("click", () => {
 });
 
 // Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
-function updateFilteredRecipes() {
-    const matchingRecipes = [];
-    let recipeCountElement = document.querySelector('.container-filtres-results-number');
+// function updateFilteredRecipes() {
+//     const matchingRecipes = [];
+//     let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-        let ingredientsMatch = true, utensilsMatch = true, appliancesMatch = true;
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+//         let ingredientsMatch = true, utensilsMatch = true, appliancesMatch = true;
 
-        // Vérification des ingrédients
-        for (let j = 0; j < selectedIngredients.length && ingredientsMatch; j++) {
-            let ingredientFound = false;
-            for (let k = 0; k < recipe.ingredients.length; k++) {
-                if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
-                    ingredientFound = true;
-                    break;
-                }
-            }
-            if (!ingredientFound) ingredientsMatch = false;
-        }
+//         // Vérification des ingrédients
+//         for (let j = 0; j < selectedIngredients.length && ingredientsMatch; j++) {
+//             let ingredientFound = false;
+//             for (let k = 0; k < recipe.ingredients.length; k++) {
+//                 if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
+//                     ingredientFound = true;
+//                     break;
+//                 }
+//             }
+//             if (!ingredientFound) ingredientsMatch = false;
+//         }
 
-        // Vérification des ustensiles
-        for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
-            let utensilFound = false;
-            for (let k = 0; k < recipe.ustensils.length; k++) {
-                if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
-                    utensilFound = true;
-                    break;
-                }
-            }
-            if (!utensilFound) utensilsMatch = false;
-        }
+//         // Vérification des ustensiles
+//         for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
+//             let utensilFound = false;
+//             for (let k = 0; k < recipe.ustensils.length; k++) {
+//                 if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
+//                     utensilFound = true;
+//                     break;
+//                 }
+//             }
+//             if (!utensilFound) utensilsMatch = false;
+//         }
 
-        // Vérification des appareils
-        if (selectedAppliances.length > 0 && recipe.appliance.toLowerCase() !== selectedAppliances[0].toLowerCase()) {
-            appliancesMatch = false;
-        }
+//         // Vérification des appareils
+//         if (selectedAppliances.length > 0 && recipe.appliance.toLowerCase() !== selectedAppliances[0].toLowerCase()) {
+//             appliancesMatch = false;
+//         }
 
-        if (ingredientsMatch && utensilsMatch && appliancesMatch) {
-            matchingRecipes.push(recipe);
-        }
-    }
+//         if (ingredientsMatch && utensilsMatch && appliancesMatch) {
+//             matchingRecipes.push(recipe);
+//         }
+//     }
 
-    recipeCountElement.textContent = matchingRecipes.length.toString();
-}
+//     recipeCountElement.textContent = matchingRecipes.length.toString();
+// }
 
 
 
@@ -352,14 +352,17 @@ document.addEventListener('DOMContentLoaded', function() {
 //         if (filteredRecipes.length === 0) {
 //             const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
 //             displayErrorMessage(errorMessageText);
+//              updateRecipesCount(0);
 //         } else {
 //             errorMessage.innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
 //             hideErrorMessage();
+//              updateRecipesCount(filteredRecipes.length);
 //         }
 //     } else {
 //         filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
 //         errorMessage.innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
 //         hideErrorMessage();
+//          updateRecipesCount(filteredRecipes.length);
 //     }
 
     //rajouter une } ici pour avoir la fonction isolé. L'algo 1 se termine ici
@@ -384,20 +387,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (filteredRecipes.length === 0) {
                     const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
                     displayErrorMessage(errorMessageText);
+                    updateRecipesCount(0);
                 
                  
                 } else {
                     document.getElementById('error-message').innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
                     hideErrorMessage(); 
+                    updateRecipesCount(filteredRecipes.length);
                 }
             } else {
                 filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
                 document.getElementById('error-message').innerHTML = "";
-                hideErrorMessage();   // Efface le message d'erreur s'il y avait un précédent
+                hideErrorMessage();
+                updateRecipesCount(filteredRecipes.length);   // Efface le message d'erreur s'il y avait un précédent
             }
 
 
-
+            function updateRecipesCount(count) {
+                const recipesCountElement = document.querySelector('.container-filtres-results-number');
+                recipesCountElement.textContent = count.toString() ;
+            }
 
 
         const recipesContainer = document.getElementById('recipe-cards');
