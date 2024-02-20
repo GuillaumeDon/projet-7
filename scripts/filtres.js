@@ -1,4 +1,7 @@
 import recipes from './recipes.js';
+import {displayRecipeCards} from './cards.js';
+
+
 
 // Fonction pour ajouter des éléments à une liste
 function addItemsToList(ulElement, itemValues) {
@@ -22,8 +25,8 @@ const allIngredients = new Set();
 const allAppliances = new Set();
 const allUstensils = new Set();
 
-// Remplissez les ensembles avec les données de recettes
-recipes.forEach(recipe => {
+
+function updateTags(recipes){recipes.forEach(recipe => {
     recipe.ingredients.forEach(ingredient => {
         allIngredients.add(ingredient.ingredient);
     });
@@ -31,7 +34,10 @@ recipes.forEach(recipe => {
     recipe.ustensils.forEach(ustensil => {
         allUstensils.add(ustensil);
     });
-});
+});}
+
+updateTags(recipes)
+
 
 // Ajoutez les valeurs des ensembles aux listes de filtres
 addItemsToList(ingredientsUl, allIngredients);
@@ -255,9 +261,11 @@ function updateFilteredRecipes() {
 
         if (ingredientsMatch && utensilsMatch && appliancesMatch) {
             matchingRecipes.push(recipe);
+            console.log(matchingRecipes);
         }
     }
-
+    displayRecipeCards(matchingRecipes);
+    console.log(matchingRecipes);
     recipeCountElement.textContent = matchingRecipes.length.toString();
 }
 

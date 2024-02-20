@@ -1,9 +1,10 @@
 //version JS
 import recipes from './recipes.js';
-function displayRecipeCards() {
+export function displayRecipeCards(recipesList) {
     const recipeCardsContainer = document.querySelector('.container-recipe-cards');
-
-    recipes.forEach(recipe => {
+    recipeCardsContainer.innerHTML="";
+console.log(recipesList.length);
+    recipesList.forEach(recipe => {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('container-recipe-cards-item');
 
@@ -64,6 +65,8 @@ function displayRecipeCards() {
     updateRecipeCount(); // MAJ du compteur de recettes
 }
 
+
+
 function updateRecipeCount() {
     const recipeCards = document.querySelectorAll('.container-recipe-cards-item');
     const recipeCount = recipeCards.length;
@@ -71,4 +74,4 @@ function updateRecipeCount() {
 }
 
 // Appeler la fonction pour afficher les cartes de recette au chargement de la page
-window.onload = displayRecipeCards;
+window.onload = displayRecipeCards(recipes);
