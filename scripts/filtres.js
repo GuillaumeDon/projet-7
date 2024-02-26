@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gestionnaire pour le clic sur l'icône de fermeture
     closeButton.addEventListener('click', function() {
         input.value = ''; // Efface le contenu de l'input
-        updateRecipesDisplay(); // Met à jour l'affichage des recettes
+        updateRecipesDisplay(); //Blocage de la MAJ de la page 
     });
 
 
@@ -403,43 +403,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const searchText = input.value.toLowerCase();
             let filteredRecipes;
         
-            if (searchText.length >= 3) {
+            if (searchText.length >= 3 || selectedIngredients.length > 0 || selectedAppliances.length > 0 || selectedUstensils.length > 0) {
                 filteredRecipes = recipes.filter(recipe => {
-                    return recipe.name.toLowerCase().includes(searchText) ||
-                           recipe.description.toLowerCase().includes(searchText) ||
-                           recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
-                           recipe.appliance.toLowerCase().includes(searchText) ||
-                           recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+                    // Vérifier si le texte saisi correspond au nom, à la description, à l'ingrédient, à l'appareil ou à l'ustensile de la recette
+                    const matchesSearch = 
+                        recipe.name.toLowerCase().includes(searchText) ||
+                        recipe.description.toLowerCase().includes(searchText) ||
+                        recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText)) ||
+                        recipe.appliance.toLowerCase().includes(searchText) ||
+                        recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(searchText));
+        
+                    // Vérifier si les ingrédients, les appareils et les ustensiles de la recette correspondent aux filtres sélectionnés
+                    const ingredientsMatch = selectedIngredients.every(selectedIngredient =>
+                        recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase()))
+                    );
+        
+                    const appliancesMatch = selectedAppliances.every(selectedAppliance =>
+                        recipe.appliance.toLowerCase().includes(selectedAppliance.toLowerCase())
+                    );
+        
+                    const ustensilsMatch = selectedUstensils.every(selectedUstensil =>
+                        recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedUstensil.toLowerCase()))
+                    );
+        
+                    return matchesSearch && ingredientsMatch && appliancesMatch && ustensilsMatch;
                 });
-                
-                // Affichage du message d'erreur si aucune correspondance n'est trouvée
-                if (filteredRecipes.length === 0) {
-                    const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
-                    displayErrorMessage(errorMessageText);
-                    updateRecipesCount(0);
-                
-                 
-                } else {
-                    document.getElementById('error-message').innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
-                    hideErrorMessage(); 
-                    updateRecipesCount(filteredRecipes.length);
-                }
             } else {
-                filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
-                document.getElementById('error-message').innerHTML = "";
-                hideErrorMessage();
-                updateRecipesCount(filteredRecipes.length);   // Efface le message d'erreur s'il y avait un précédent
+                // Si aucun filtre n'est appliqué, afficher toutes les recettes
+                filteredRecipes = recipes;
             }
-
+        
+            // Mettre à jour l'affichage des recettes
             displayRecipeCards(filteredRecipes);
-
-            function updateRecipesCount(count) {
-                const recipesCountElement = document.querySelector('.container-filtres-results-number');
-                recipesCountElement.textContent = count.toString() ;
-            }
-
-
-};
+        }
+        
 
 
 
