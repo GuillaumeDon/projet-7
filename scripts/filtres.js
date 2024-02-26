@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 filteredRecipes = recipes;
             }
             if (filteredRecipes.length === 0) {
-                const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
+                const errorMessageText = `Aucune recette ne contient  <span class="result-maj">  '${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
                 displayErrorMessage(errorMessageText);
                 updateRecipesCount(0);
             
