@@ -357,26 +357,32 @@ document.addEventListener('DOMContentLoaded', function() {
 //             }
 //         }
 
+// if (filteredRecipes.length === 0) {
+//     const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
+//     displayErrorMessage(errorMessageText);
+//     updateRecipesCount(0);
 
-//         if (filteredRecipes.length === 0) {
-//             const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
-//             displayErrorMessage(errorMessageText);
-//              updateRecipesCount(0);
-//         } else {
-//             errorMessage.innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
-//             hideErrorMessage();
-//              updateRecipesCount(filteredRecipes.length);
-//         }
-//     } else {
-//         filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
-//         errorMessage.innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
-//         hideErrorMessage();
-//          updateRecipesCount(filteredRecipes.length);
-//     }
+ 
+// } else {
+//     document.getElementById('error-message').innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
+//     hideErrorMessage(); 
+//     updateRecipesCount(filteredRecipes.length);
+// }
+// } else {
+// filteredRecipes = recipes; // Affiche toutes les recettes si le champ est vide
+// document.getElementById('error-message').innerHTML = "";
+// hideErrorMessage();
+// updateRecipesCount(filteredRecipes.length);   // Efface le message d'erreur s'il y avait un précédent
+// }
 
-    //rajouter une } ici pour avoir la fonction isolé. L'algo 1 se termine ici
+// displayRecipeCards(filteredRecipes);
 
+// function updateRecipesCount(count) {
+// const recipesCountElement = document.querySelector('.container-filtres-results-number');
+// recipesCountElement.textContent = count.toString() ;
+// }
 
+// }
 
         //Algo 2 avec un filter
         function updateRecipesDisplay() {
