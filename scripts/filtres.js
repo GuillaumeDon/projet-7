@@ -39,12 +39,12 @@ function updateTags(recipes){recipes.forEach(recipe => {
 updateTags(recipes)
 
 
-// Ajoutez les valeurs des ensembles aux listes de filtres
+// Ajout des valeurs des ensembles aux listes de filtres
 addItemsToList(ingredientsUl, allIngredients);
 addItemsToList(appliancesUl, allAppliances);
 addItemsToList(ustensilsUl, allUstensils);
 
-// Fonction pour vérifier si un élément existe déjà dans la liste de choix
+//Vérifier si un élément existe déjà dans la liste de choix
 function isItemInList(ulElement, itemName) {
     const items = ulElement.querySelectorAll("li");
     for (const item of items) {
@@ -91,7 +91,7 @@ let selectedIngredients = [];
 let selectedAppliances = [];
 let selectedUstensils = [];
 
-// Fonction pour supprimer un élément d'un tableau
+// Supprimer un élément d'un tableau
 function removeItemFromArray(array, item) {
     const index = array.indexOf(item);
     if (index > -1) {
@@ -99,7 +99,7 @@ function removeItemFromArray(array, item) {
     }
 }
 
-// Fonction pour ajouter un élément à la liste de choix
+// Ajouter un élément à la liste de choix
 function addFilterItem(ulElement, itemName, array) {
     const li = document.createElement("li");
     li.classList.add('container-filtres-choice-list-tag');
@@ -121,11 +121,11 @@ function addFilterItem(ulElement, itemName, array) {
     li.appendChild(img);
     ulElement.appendChild(li);
 
-    // Ajouter le filtre sélectionné au tableau correspondant
+    // Ajout du filtre sélectionné au tableau correspondant
     array.push(itemName);
 }
 
-// Écouter les événements d'entrée utilisateur dans les barres de recherche
+
 ingredientsInput.addEventListener("input", () => {
     filterDropdownList(ingredientsInput, ingredientsUl);
 });
@@ -138,7 +138,7 @@ ustensilsInput.addEventListener("input", () => {
     filterDropdownList(ustensilsInput, ustensilsUl);
 });
 
-// Fonction pour filtrer les éléments de la liste en fonction de la saisie de l'utilisateur
+// Filtrer les éléments de la liste en fonction de la saisie de l'utilisateur
 function filterDropdownList(filterInput, ulElement) {
     const searchText = filterInput.value.toLowerCase().trim();
     const items = ulElement.querySelectorAll("li");
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         filterDropdownList(input, ustensilsUl);
     });});
 
-// Gérez les événements pour effacer les filtres
+// Evénements pour effacer les filtres
 const ingredientsCloseIcon = document.querySelector(".container-filtres-tags-tag1-logo.logoClose");
 const appliancesCloseIcon = document.querySelector(".container-filtres-tags-tag2-logo.logoClose");
 const ustensilsCloseIcon = document.querySelector(".container-filtres-tags-tag3-logo.logoClose");
@@ -202,7 +202,7 @@ ustensilsCloseIcon.addEventListener("click", () => {
     updateFilteredRecipes();
 });
 
-// Fonction pour réinitialiser la liste de filtres
+// Réinitialiser la liste de filtres
 function resetFilterList(ulElement) {
     const items = ulElement.querySelectorAll("li");
     items.forEach(item => {
@@ -210,7 +210,7 @@ function resetFilterList(ulElement) {
     });
 }
 
-// Gérez l'icône de fermeture dans la barre de recherche
+// Gestion de l'icône de fermeture dans la barre de recherche
 const searchInput = document.getElementById("search");
 const closeIcon = document.querySelector(".header-form-close");
 
@@ -221,7 +221,7 @@ closeIcon.addEventListener("click", () => {
     filterDropdownList(searchInput, ustensilsUl);
 });
 
-// Comparez les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
+// Compare les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
 function updateFilteredRecipes() {
     const matchingRecipes = [];
     let recipeCountElement = document.querySelector('.container-filtres-results-number');

@@ -73,5 +73,5 @@ function updateRecipeCount() {
     document.querySelector('.container-filtres-results-number').textContent = recipeCount;
 }
 
-// Appeler la fonction pour afficher les cartes de recette au chargement de la page
+// Appel la fonction pour afficher les cartes de recette au chargement de la page
 window.onload = displayRecipeCards(recipes);
