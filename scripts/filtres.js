@@ -103,7 +103,7 @@ function removeItemFromArray(array, item, ulElement) {
         const li = document.createElement("li");
         li.textContent = item;
         // Ajouter le nouvel élément li à l'élément ul
-        ulElement.appendChild(li);
+        ulElement.insertBefore(li, ulElement.firstChild);
     }
 }
 
