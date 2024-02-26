@@ -104,6 +104,7 @@ function removeItemFromArray(array, item, ulElement) {
         li.textContent = item;
         // Ajouter le nouvel élément li à l'élément ul
         ulElement.insertBefore(li, ulElement.firstChild);
+        // updateFilteredRecipes();
     }
 }
 
