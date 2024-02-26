@@ -87,7 +87,7 @@ p {
 }
 .header-form-close {
   position: absolute;
-  bottom: 60%;
+  bottom: 600px;
   right: 25%;
   width: 20px;
   height: 20px;
@@ -162,7 +162,7 @@ p {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   position: relative;
-  margin: 0px 30px 50px 30px;
+  margin: 0px 30px 0px 30px;
 }
 @media screen and (max-width: 800px) {
   .container-recipe-cards {
@@ -175,6 +175,7 @@ p {
   height: 660px;
   font-family: "Manrope", sans-serif;
   font-size: 14px;
+  margin-bottom: 30px;
 }
 .container-recipe-cards-item :not(img) {
   padding: 0px 20px;

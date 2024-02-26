@@ -8,7 +8,7 @@ p{
     grid-template-columns: repeat(3, 1fr); // Crée trois colonnes de taille égale
     gap: 20px; // Espace entre les cartes
     position: relative;
-    margin: 0px 30px 50px 30px;
+    margin: 0px 30px 0px 30px;
   
 @media screen and (max-width: 800px){
     grid-template-columns: repeat(1, 1fr); // Crée trois colonnes de taille égale
@@ -21,6 +21,7 @@ p{
         height: 660px;
         font-family: $fontText;
         font-size: 14px;
+        margin-bottom: 30px;
 
         :not(img){
         padding: 0px 20px;
