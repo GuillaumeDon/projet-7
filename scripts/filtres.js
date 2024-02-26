@@ -61,6 +61,7 @@ ingredientsUl.addEventListener("click", (event) => {
         const selectedIngredient = event.target.textContent;
         if (!isItemInList(choiceList, selectedIngredient)) {
             addFilterItem(choiceList, selectedIngredient, selectedIngredients);
+            event.target.remove();
             updateFilteredRecipes();
         }
     }
@@ -71,6 +72,7 @@ appliancesUl.addEventListener("click", (event) => {
         const selectedAppliance = event.target.textContent;
         if (!isItemInList(choiceList, selectedAppliance)) {
             addFilterItem(choiceList, selectedAppliance, selectedAppliances);
+            event.target.remove();
             updateFilteredRecipes();
         }
     }
@@ -81,6 +83,7 @@ ustensilsUl.addEventListener("click", (event) => {
         const selectedUstensil = event.target.textContent;
         if (!isItemInList(choiceList, selectedUstensil)) {
             addFilterItem(choiceList, selectedUstensil, selectedUstensils);
+            event.target.remove();
             updateFilteredRecipes();
         }
     }
@@ -92,10 +95,15 @@ let selectedAppliances = [];
 let selectedUstensils = [];
 
 // Supprimer un élément d'un tableau
-function removeItemFromArray(array, item) {
+function removeItemFromArray(array, item, ulElement) {
     const index = array.indexOf(item);
     if (index > -1) {
         array.splice(index, 1);
+        // Créer un nouvel élément li avec le texte de l'élément supprimé
+        const li = document.createElement("li");
+        li.textContent = item;
+        // Ajouter le nouvel élément li à l'élément ul
+        ulElement.appendChild(li);
     }
 }
 
@@ -113,7 +121,12 @@ function addFilterItem(ulElement, itemName, array) {
     img.classList.add("container-filtres-choice-list-item-logo", "logoTag");
     
     img.addEventListener("click", () => {
-        removeItemFromArray(array, itemName);
+        // Supprimer l'élément de selectedIngredients et le réintégrer dans ingredientsUl
+        removeItemFromArray(selectedIngredients, itemName, ingredientsUl);
+        // Supprimer l'élément de selectedAppliances et le réintégrer dans appliancesUl
+        removeItemFromArray(selectedAppliances, itemName, appliancesUl);
+        // Supprimer l'élément de selectedUstensils et le réintégrer dans ustensilsUl
+        removeItemFromArray(selectedUstensils, itemName, ustensilsUl);
         ulElement.removeChild(li);
         updateFilteredRecipes();
     });
