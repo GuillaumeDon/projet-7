@@ -87,7 +87,7 @@ p {
 }
 .header-form-close {
   position: absolute;
-  bottom: 644px;
+  bottom: 60%;
   right: 25%;
   width: 20px;
   height: 20px;
