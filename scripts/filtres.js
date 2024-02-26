@@ -432,13 +432,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Si aucun filtre n'est appliqué, afficher toutes les recettes
                 filteredRecipes = recipes;
             }
+            if (filteredRecipes.length === 0) {
+                const errorMessageText = `Aucune recette ne contient <span class="result-maj">'${searchText}'</span>. Vous pouvez chercher "tarte aux pommes", "poisson", etc.`;
+                displayErrorMessage(errorMessageText);
+                updateRecipesCount(0);
+            
+             
+            } else {
+                document.getElementById('error-message').innerHTML = ""; // Efface le message d'erreur s'il y avait un précédent
+                hideErrorMessage(); 
+                updateRecipesCount(filteredRecipes.length);
+            }
         
             // Mettre à jour l'affichage des recettes
             displayRecipeCards(filteredRecipes);
+
+            function updateRecipesCount(count) {
+                const recipesCountElement = document.querySelector('.container-filtres-results-number');
+                recipesCountElement.textContent = count.toString() ;
+                }
+                
         }
         
 
 
+
+
+// Affichage du message d'erreur si aucune correspondance n'est trouvée
 
 
 
