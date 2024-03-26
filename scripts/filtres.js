@@ -99,17 +99,27 @@ function removeItemFromArray(array, item, ulElement) {
     const index = array.indexOf(item);
     if (index > -1) {
         array.splice(index, 1);
-        // Créer un nouvel élément li avec le texte de l'élément supprimé
         const li = document.createElement("li");
         li.textContent = item;
-        // Ajouter le nouvel élément li à l'élément ul
         ulElement.insertBefore(li, ulElement.firstChild);
-        // Mettre à jour les listes déroulantes pour refléter le changement
-        updateDropdownOptions(recipes.filter(recipe => {
-            return selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient)) &&
-                   selectedAppliances.every(appliance => recipe.appliance === appliance) &&
-                   selectedUstensils.every(utensil => recipe.ustensils.includes(utensil));
-        }));
+
+        // Check if the ul list is empty
+        if (ulElement.getElementsByTagName('li').length === 0) {
+            // If the ul list is empty, update the dropdown options to show all recipes
+            updateDropdownOptions(recipes);
+            updateFilteredRecipes();
+        } else {
+            // Otherwise, update the dropdown options to reflect the change
+            updateDropdownOptions(recipes.filter(recipe => {
+                return selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient)) &&
+                       selectedAppliances.every(appliance => recipe.appliance === appliance) &&
+                       selectedUstensils.every(utensil => recipe.ustensils.includes(utensil));
+                       
+            }));
+            updateRecipesDisplay();
+           
+        }
+      
     }
 }
 
@@ -242,61 +252,40 @@ closeIcon.addEventListener("click", () => {
     filterDropdownList(searchInput, ustensilsUl);
 });
 
+
+
+
 // Compare les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
 function updateFilteredRecipes() {
 
+ 
+    
+    let matchingRecipes = recipes.filter(recipe => {
+        // Vérifier si les ingrédients correspondent aux filtres sélectionnés
+        const ingredientsMatch = selectedIngredients.every(selectedIngredient =>
+            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() === selectedIngredient.toLowerCase())
+        );
+
+        // Vérifier si les ustensiles correspondent aux filtres sélectionnés
+        const utensilsMatch = selectedUstensils.every(selectedUstensil =>
+            recipe.ustensils.some(ustensil => ustensil.toLowerCase() === selectedUstensil.toLowerCase())
+        );
+
+        // Vérifier si les appareils correspondent aux filtres sélectionnés
+        const appliancesMatch = selectedAppliances.every(selectedAppliance =>
+            recipe.appliance.toLowerCase() === selectedAppliance.toLowerCase()
+        );
+
+        return ingredientsMatch && utensilsMatch && appliancesMatch;
+    });
+
+    // Vérifier si aucun filtre n'est sélectionné
     if (selectedIngredients.length === 0 && selectedAppliances.length === 0 && selectedUstensils.length === 0) {
-        updateRecipesDisplay();
-        return;
-    }
-
-    let matchingRecipes = [];
-    let recipeCountElement = document.querySelector('.container-filtres-results-number');
-
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-        let ingredientsMatch = true, utensilsMatch = true, appliancesMatch = true;
-
-        // Vérification des ingrédients
-        for (let j = 0; j < selectedIngredients.length && ingredientsMatch; j++) {
-            let ingredientFound = false;
-            for (let k = 0; k < recipe.ingredients.length; k++) {
-                if (recipe.ingredients[k].ingredient.toLowerCase() === selectedIngredients[j].toLowerCase()) {
-                    ingredientFound = true;
-                    break;
-                }
-            }
-            if (!ingredientFound) ingredientsMatch = false;
-        }
-
-        // Vérification des ustensiles
-        for (let j = 0; j < selectedUstensils.length && utensilsMatch; j++) {
-            let utensilFound = false;
-            for (let k = 0; k < recipe.ustensils.length; k++) {
-                if (recipe.ustensils[k].toLowerCase() === selectedUstensils[j].toLowerCase()) {
-                    utensilFound = true;
-                    break;
-                }
-            }
-            if (!utensilFound) utensilsMatch = false;
-        }
-
-        // Vérification des appareils
-        if (selectedAppliances.length > 0 && recipe.appliance.toLowerCase() !== selectedAppliances[0].toLowerCase()) {
-            appliancesMatch = false;
-        }
-
-        if (ingredientsMatch && utensilsMatch && appliancesMatch) {
-            matchingRecipes.push(recipe);
-            console.log(matchingRecipes);
-        }
+        matchingRecipes = recipes; // Afficher toutes les recettes si aucun filtre n'est sélectionné
     }
 
     updateDropdownOptions(matchingRecipes);
-
     displayRecipeCards(matchingRecipes);
-    console.log(matchingRecipes);
-    recipeCountElement.textContent = matchingRecipes.length.toString();
 }
 
 function updateDropdownOptions(recipes) {
@@ -449,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function updateRecipesDisplay() {
             const searchText = input.value.toLowerCase();
             let filteredRecipes;
-        
+         
             if (searchText.length >= 3 || selectedIngredients.length > 0 || selectedAppliances.length > 0 || selectedUstensils.length > 0) {
                 filteredRecipes = recipes.filter(recipe => {
                     // Vérifier si le texte saisi correspond au nom, à la description, à l'ingrédient, à l'appareil ou à l'ustensile de la recette
@@ -477,6 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 // Si aucun filtre n'est appliqué, afficher toutes les recettes
+                
                 filteredRecipes = recipes;
             }
             if (filteredRecipes.length === 0) {
@@ -504,9 +494,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-// Affichage du message d'erreur si aucune correspondance n'est trouvée
-
+//Code pour l'input si le filtres sont vide
+        // if (selectedIngredients.length === 0 && selectedAppliances.length === 0 && selectedUstensils.length === 0) {
+        //     updateRecipesDisplay();
+        //     updateDropdownOptions(recipes);
+        //     return;
 
 
 
