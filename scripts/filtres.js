@@ -243,7 +243,7 @@ function updateFilteredRecipes() {
         return;
     }
 
-    const matchingRecipes = [];
+    let matchingRecipes = [];
     let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
     for (let i = 0; i < recipes.length; i++) {
@@ -284,13 +284,47 @@ function updateFilteredRecipes() {
             console.log(matchingRecipes);
         }
     }
+
+    updateDropdownOptions(matchingRecipes);
+
     displayRecipeCards(matchingRecipes);
     console.log(matchingRecipes);
     recipeCountElement.textContent = matchingRecipes.length.toString();
 }
 
+function updateDropdownOptions(recipes) {
+    const ingredients = new Set();
+    const appliances = new Set();
+    const utensils = new Set();
 
+    for (const recipe of recipes) {
+        for (const ingredient of recipe.ingredients) {
+            ingredients.add(ingredient.ingredient.toLowerCase());
+        }
+        appliances.add(recipe.appliance.toLowerCase());
+        for (const utensil of recipe.ustensils) {
+            utensils.add(utensil.toLowerCase());
+        }
+    }
 
+    updateDropdown(ingredientsUl, ingredients);
+    updateDropdown(appliancesUl, appliances);
+    updateDropdown(ustensilsUl, utensils);
+}
+
+function updateDropdown(ulElement, options) {
+    // Supprimer tous les éléments de liste existants
+    while (ulElement.firstChild) {
+        ulElement.firstChild.remove();
+    }
+
+    // Ajouter un nouvel élément de liste pour chaque option
+    for (const option of options) {
+        const li = document.createElement("li");
+        li.textContent = option;
+        ulElement.appendChild(li);
+    }
+}
 
 
 
