@@ -237,6 +237,12 @@ closeIcon.addEventListener("click", () => {
 
 // Compare les tableaux sélectionnés avec le tableau de recettes (algo 1 avec boucle)
 function updateFilteredRecipes() {
+
+    if (selectedIngredients.length === 0 && selectedAppliances.length === 0 && selectedUstensils.length === 0) {
+        updateRecipesDisplay();
+        return;
+    }
+
     const matchingRecipes = [];
     let recipeCountElement = document.querySelector('.container-filtres-results-number');
 
