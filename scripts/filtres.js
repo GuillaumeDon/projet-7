@@ -104,7 +104,12 @@ function removeItemFromArray(array, item, ulElement) {
         li.textContent = item;
         // Ajouter le nouvel élément li à l'élément ul
         ulElement.insertBefore(li, ulElement.firstChild);
-        // updateFilteredRecipes();
+        // Mettre à jour les listes déroulantes pour refléter le changement
+        updateDropdownOptions(recipes.filter(recipe => {
+            return selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient)) &&
+                   selectedAppliances.every(appliance => recipe.appliance === appliance) &&
+                   selectedUstensils.every(utensil => recipe.ustensils.includes(utensil));
+        }));
     }
 }
 
@@ -198,6 +203,8 @@ ingredientsCloseIcon.addEventListener("click", () => {
     selectedIngredients = [];
     choiceList.innerHTML = "";
     updateFilteredRecipes();
+
+    
 });
 
 appliancesCloseIcon.addEventListener("click", () => {
